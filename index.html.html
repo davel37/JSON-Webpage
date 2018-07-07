@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" media="screen"
+          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>ToDoList</title>
+
+    <!--  -->
+   <style>
+        .content {
+            background: grey;
+            margin: 0 auto;
+            width: 600px;
+            padding: 10px;
+            min-height: 300px;
+        }
+
+        .read-more {
+            border: 1px solid #000;
+            padding.15px;
+            margin-bottom: 20px;
+        }
+
+        .read-more-link{
+            text-decoration: none;
+            font-weight: bolder;
+            color: green;
+        }
+        .show-less-link {
+            text-decoration: none;
+            font-weight: bolder;
+            color: green;
+        }
+
+        body {
+            background-color: lightblue;
+        }
+
+        #wrapper {
+            height: 500px;
+            width: 1500px;
+            margin: 1 auto;
+            padding: 100px 0 100px 0;
+        }
+
+        /*----start header----*/
+
+        #header {
+            padding: 10px 10px px;
+        }
+
+        #header .top_banner {
+            background: url(../images/header.jpg) no-repeat left top;
+            height: 250px;
+            padding 100px 35px 100px 5px;
+            border: #a4a5a5 solid 10px;
+        }
+
+        #header h1 {
+            font-size: 40px;
+            color: #ffffff;
+            margin-left: 600px;
+            padding: 10px 10px 10px;
+        }
+
+        #header h1 a {
+            color: #323A07;
+            text-decoration: none;
+        }
+
+        #header h1 a:hover {
+            text-decoration: none;
+        }
+
+        #header p {
+            font-size: 18px;
+            margin-left: 630px;
+            color: #ffffff;
+        }
+        .img {
+    position: relative;
+    float: left;
+    width:  100px;
+    height: 100px;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+}
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+
+        <div id="header">
+
+            <div class="top_banner">
+                <h1>Twitter App</h1>
+                <p>Control your posts</p>
+            </div>
+
+        </div>
+        <div class='content'>
+            <div class='read-more'>
+                
+            </div>
+
+            <div class='read-more'>
+
+            </div>
+
+            <div class='read-more'>
+
+
+            </div>
+             <div class='read-more'>
+
+
+            </div>
+             <div class='read-more'>
+
+            </div>
+            </div>
+            <ol id="view"></ol>
+        </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+                      const posts = [{
+                    id: 1,
+                    headerImage: 'https://eur04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fplacekitten.com%2F200%2F300&data=02%7C01%7C%7C614c084388d64f55a4e808d5e36754ee%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C636664955294245961&sdata=lkNWOB8R3Y1u1W%2F5%2FR1WNZzf4SRwL5ZeWw%2B1wJm6nYE%3D&reserved=0',
+                    title: `Aliquam feugiat viverra auctor.`,
+                    text: `Lorem ipsum dolor sit amet, consectetur
+adipiscing elit. Donec interdum mauris odio, vulputate imperdiet erat
+fringilla ultricies. In mattis tincidunt finibus. Suspendisse laoreet
+risus nisl, quis porta nulla auctor sed. Vestibulum eleifend lobortis
+lectus et vestibulum. Nunc eget enim at velit hendrerit dictum. Etiam
+pretium sagittis orci, ac ultricies justo efficitur sed. Mauris non
+eros diam. Vivamus euismod efficitur tellus eu faucibus.`
+                }, {
+            id         : 2,
+            headerImage: 'https://eur04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fplacekitten.com%2F500%2F500&data=02%7C01%7C%7C614c084388d64f55a4e808d5e36754ee%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C636664955294245961&sdata=ON4P9W6mWFPyCMBmuViBWkjGIGnY2pyAElIQUUTrmzU%3D&reserved=0',
+            title      : `Mauris nec consectetur dolor, nec fringilla
+nulla.`,
+            text       : `Vestibulum non sem quis nunc ultrices
+pharetra euismod sit amet libero. Quisque congue lectus vitae odio
+dictum auctor. Aliquam condimentum ligula nulla. Nam est mauris,
+hendrerit bibendum rutrum in, dignissim imperdiet enim. Cras vel felis
+at libero imperdiet gravida. Nullam eleifend varius pulvinar. Nulla
+dapibus lacinia metus vel ornare. Donec gravida ligula nibh, eget
+dictum lorem porta id. Sed mattis sagittis ipsum eget dapibus. Fusce
+non elit non ante pulvinar rhoncus ut aliquet urna. Nam aliquam purus
+et nunc sagittis ullamcorper. Donec luctus ut magna id euismod. Etiam
+auctor, ex elementum mattis pellentesque, massa magna tempus mi, id
+pulvinar mi massa eget tortor. `
+        },
+        {
+            id         : 3,
+            headerImage: 'https://eur04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fplacekitten.com%2F400%2F300&data=02%7C01%7C%7C614c084388d64f55a4e808d5e36754ee%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C636664955294245961&sdata=BLRFCGnJjgPcO8eYkfv6k48PHMkUBmR36k0ne8A9v%2BY%3D&reserved=0',
+            title      : `Nulla dapibus lacinia metus vel ornare.`,
+            text       : `Lorem ipsum dolor sit amet, consectetur
+adipiscing elit. Donec interdum mauris odio, vulputate imperdiet erat
+fringilla ultricies. In mattis tincidunt finibus. Suspendisse laoreet
+risus nisl, quis porta nulla auctor sed. Vestibulum eleifend lobortis
+lectus et vestibulum. Nunc eget enim at velit hendrerit dictum. Etiam
+pretium sagittis orci, ac ultricies justo efficitur sed. Mauris non
+eros diam. Vivamus euismod efficitur tellus eu faucibus.`
+        },
+        {
+            id         : 4,
+            headerImage: 'https://eur04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fplacekitten.com%2F300%2F300&data=02%7C01%7C%7C614c084388d64f55a4e808d5e36754ee%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C636664955294245961&sdata=K2IftKctJrZHdP21n%2FM4bW88AhXramGDXDpvTVeo1dE%3D&reserved=0',
+            title      : `Nunc hendrerit, tortor ac aliquam egestas.`,
+            text       : `Aliquam feugiat viverra auctor. Nullam
+posuere nisi lacus, ac posuere neque aliquet a. Sed iaculis porta
+ligula sed mollis. Suspendisse at massa in dui maximus congue vitae
+eget nunc. Nunc ornare mi quam, vel fringilla tortor elementum ac.
+Quisque finibus porta ex, vel consectetur nisi hendrerit nec.
+Suspendisse potenti. Integer fringilla arcu in purus euismod mattis.
+Donec placerat lorem scelerisque ante sodales, a auctor neque interdum.
+Praesent quis fringilla est. Donec iaculis vitae ligula sed fermentum.
+Suspendisse ornare lacinia lacinia.`
+        },
+        {
+            id         : 5,
+            headerImage: 'https://eur04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fplacekitten.com%2F400%2F400&data=02%7C01%7C%7C614c084388d64f55a4e808d5e36754ee%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C636664955294245961&sdata=Zp%2FnxBgWadF%2B%2FrIlpay8FCANpcTC6OtWnJ58aN%2BI8vk%3D&reserved=0',
+            title      : `Nunc ornare mi quam, vel fringilla tortor
+elementum ac.`,
+            text       : `Duis eu vestibulum lacus. Aenean convallis
+gravida diam, vitae dapibus urna. Nam commodo, nibh ut tristique
+eleifend, lectus mi molestie felis, congue tincidunt nulla purus nec
+lorem. Nunc vehicula sem in tempor vulputate. Duis vestibulum
+sollicitudin dui ut lobortis. Proin eu pretium erat. Maecenas arcu
+ante, ullamcorper iaculis erat a, tempus tempor nulla. Vivamus ornare
+urna egestas metus rhoncus, et fringilla libero suscipit.`
+        },
+        {
+            id         : 6,
+            headerImage: 'https://eur04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fplacekitten.com%2Fg%2F300%2F400&data=02%7C01%7C%7C614c084388d64f55a4e808d5e36754ee%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C636664955294245961&sdata=D2%2FNG9lh2qsL2ABvXzHi1Eo%2F0YlXjUnzizkHQ2z0%2B1k%3D&reserved=0',
+            title      : `Proin eu pretium erat.`,
+            text       : `Mauris nec consectetur dolor, nec fringilla
+nulla. Nunc hendrerit, tortor ac aliquam egestas, ligula turpis
+lobortis tellus, a mattis mi libero in leo. Curabitur in rhoncus elit,
+nec lobortis ante. Maecenas ultrices purus a mi scelerisque imperdiet.
+Proin dictum lorem sed diam semper pulvinar.`
+        } ];
+ 
+
+        const buildView = function () {
+            $('.read-more').html();
+
+            const elements = posts.map(function (value) {
+                return  '<img class = img src=' + value.headerImage +'>'+ value.title + '<br>' + value.text+  ' <button class="btn" data-index="' + value.id + '">X</button></li>';
+            });
+
+            $('.read-more').html(elements);
+        };
+
+        
+        const removeElementFromList = function (index) {
+            const newList = list.filter(function (val) {
+                return val.id !== parseInt(index)
+            });
+
+            list = newList;
+        };
+''
+        
+
+        buildView();
+        var readMore = $(".read-more").html();
+                var readLess = readMore.substring(0, 40);
+
+
+                if (readMore.length > 40) {
+                    $(".read-more").html(readLess).append("<a href= ''  class = 'read-more-link'>Show More</a>");
+                } else {
+                    $('.read-more').html(readMore);
+                }
+
+                $("body").on("click", ".read-more-link", function(event) {
+                    event.preventDefault();
+                    $(this).parent(".read-more").html(readMore).append("<a href= ''  class = 'show-less-link'>Show Less</a>");
+
+                });
+                $("body").on("click", ".show-less-link", function(event) {
+                    event.preventDefault();
+                    $(this).parent(".read-more").html(readMore.substring(0, 40)).append("<a href= ''  class = 'read-more-link'>Show More</a>");
+
+                });
+
+    });
+</script>
+
+</body>
+
+</html>
