@@ -90,6 +90,9 @@
     background-repeat:   no-repeat;
     background-size:     cover;
 }
+       .btn{
+            float: right;
+        }
     </style>
 </head>
 
@@ -214,7 +217,7 @@ Proin dictum lorem sed diam semper pulvinar.`
             $('.read-more').html();
 
             const elements = posts.map(function (value) {
-                return  '<img class = img src=' + value.headerImage +'>'+ value.title + '<br>' + value.text+  ' <button class="btn" data-index="' + value.id + '">X</button></li>';
+                return  '<img class = img src=' + value.headerImage +'>'+ '<b>'+ value.title + '</b>' + '<br>' + value.text+ '<br>'+' <button class="btn" data-index="' + value.id + '">X</button></li>';
             });
 
             $('.read-more').html(elements);
